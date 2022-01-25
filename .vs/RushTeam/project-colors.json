@@ -1,0 +1,16 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "cbacc49f-ed2a-45f0-9c03-dc6e7872857f": {
+      "ProjectGuid": "cbacc49f-ed2a-45f0-9c03-dc6e7872857f",
+      "DisplayName": "RT.Api",
+      "ColorIndex": 0
+    },
+    "60a1e188-c2ec-4279-b370-da24468f834d": {
+      "ProjectGuid": "60a1e188-c2ec-4279-b370-da24468f834d",
+      "DisplayName": "RT.Web",
+      "ColorIndex": 1
+    }
+  },
+  "NextColorIndex": 2
+}

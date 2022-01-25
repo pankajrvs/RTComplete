@@ -1,0 +1,14 @@
+C:\Users\panka\source\repos\RT\RTComplete\RTComplete\RT.Api\obj\Release\net6.0\PubTmp\Out\RT.Api.exe
+C:\Users\panka\source\repos\RT\RTComplete\RTComplete\RT.Api\obj\Release\net6.0\PubTmp\Out\appsettings.Development.json
+C:\Users\panka\source\repos\RT\RTComplete\RTComplete\RT.Api\obj\Release\net6.0\PubTmp\Out\appsettings.json
+C:\Users\panka\source\repos\RT\RTComplete\RTComplete\RT.Api\obj\Release\net6.0\PubTmp\Out\RT.Api.dll
+C:\Users\panka\source\repos\RT\RTComplete\RTComplete\RT.Api\obj\Release\net6.0\PubTmp\Out\RT.Api.deps.json
+C:\Users\panka\source\repos\RT\RTComplete\RTComplete\RT.Api\obj\Release\net6.0\PubTmp\Out\RT.Api.runtimeconfig.json
+C:\Users\panka\source\repos\RT\RTComplete\RTComplete\RT.Api\obj\Release\net6.0\PubTmp\Out\RT.Api.pdb
+C:\Users\panka\source\repos\RT\RTComplete\RTComplete\RT.Api\obj\Release\net6.0\PubTmp\Out\HtmlAgilityPack.dll
+C:\Users\panka\source\repos\RT\RTComplete\RTComplete\RT.Api\obj\Release\net6.0\PubTmp\Out\Microsoft.OpenApi.dll
+C:\Users\panka\source\repos\RT\RTComplete\RTComplete\RT.Api\obj\Release\net6.0\PubTmp\Out\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\panka\source\repos\RT\RTComplete\RTComplete\RT.Api\obj\Release\net6.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\panka\source\repos\RT\RTComplete\RTComplete\RT.Api\obj\Release\net6.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\panka\source\repos\RT\RTComplete\RTComplete\RT.Api\obj\Release\net6.0\PubTmp\Out\RT.Data.dll
+C:\Users\panka\source\repos\RT\RTComplete\RTComplete\RT.Api\obj\Release\net6.0\PubTmp\Out\RT.Data.pdb
