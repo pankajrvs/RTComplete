@@ -10,7 +10,7 @@ using RT.Data;
 
 namespace RT.Api.Operations
 {
-    public class operations
+    public class operations : Ioperations
     {
         String pattern = @"\s+";
 
@@ -41,24 +41,24 @@ namespace RT.Api.Operations
             try
             {
                 p.playerName = res.DocumentNode.SelectSingleNode("//section[@id='facts']//td[@data-label='Nickname']").InnerText.Trim();
-                p.playerRank = res.DocumentNode.SelectSingleNode("//section[@id='facts']//td[@data-label='Rank']/text()").InnerText.Replace("/t", "");
+                p.playerRank = res.DocumentNode.SelectSingleNode("//section[@id='facts']//td[@data-label='Rank']/text()").InnerText.Replace("/t", "").Trim();
                 p.playerLevel = Convert.ToInt32(res.DocumentNode.SelectSingleNode("//section[@id='facts']//td[@data-label='Level']//img").Attributes["title"].Value.Replace("Level :", ""));
-                p.playerExp = res.DocumentNode.SelectSingleNode("//section[@id='facts']//td[@data-label='Experience']").InnerText;
-                p.playerKills = res.DocumentNode.SelectSingleNode("//section[@id='facts']//td[@data-label='Kill']").InnerText;
-                p.playerGamePlayed = res.DocumentNode.SelectSingleNode("//section[@id='facts']//td[@data-label='Game Played']").InnerText;
-                p.playerRageQuit = res.DocumentNode.SelectSingleNode("//section[@id='facts']//td[@data-label='Rage Quit']").InnerText;
-                p.playerKD = res.DocumentNode.SelectSingleNode("//section[@id='facts']//td[@data-label='K/D']").InnerText;
-                p.playerClan = res.DocumentNode.SelectSingleNode("//section[@id='facts']//td[@data-label='Clan']").InnerText;
+                p.playerExp = res.DocumentNode.SelectSingleNode("//section[@id='facts']//td[@data-label='Experience']").InnerText.Trim();
+                p.playerKills = res.DocumentNode.SelectSingleNode("//section[@id='facts']//td[@data-label='Kill']").InnerText.Trim();
+                p.playerGamePlayed = res.DocumentNode.SelectSingleNode("//section[@id='facts']//td[@data-label='Game Played']").InnerText.Trim();
+                p.playerRageQuit = res.DocumentNode.SelectSingleNode("//section[@id='facts']//td[@data-label='Rage Quit']").InnerText.Trim();
+                p.playerKD = res.DocumentNode.SelectSingleNode("//section[@id='facts']//td[@data-label='K/D']").InnerText.Trim();
+                p.playerClan = res.DocumentNode.SelectSingleNode("//section[@id='facts']//td[@data-label='Clan']").InnerText.Trim();
 
-                p.playerName = Regex.Replace(p.playerName, pattern, "");
-                p.playerRank = Regex.Replace(p.playerRank, pattern, "");
-                p.playerExp = Regex.Replace(p.playerExp, pattern, "");
-                p.playerKills = Regex.Replace(p.playerKills, pattern, "");
-                p.playerGamePlayed = Regex.Replace(p.playerGamePlayed, pattern, "");
+                p.playerName = Regex.Replace(p.playerName, pattern, "").Trim();
+                p.playerRank = Regex.Replace(p.playerRank, pattern, "").Trim();
+                p.playerExp = Regex.Replace(p.playerExp, pattern, "").Trim();
+                p.playerKills = Regex.Replace(p.playerKills, pattern, "").Trim();
+                p.playerGamePlayed = Regex.Replace(p.playerGamePlayed, pattern, "").Trim();
 
-                p.playerRageQuit = Regex.Replace(p.playerRageQuit, pattern, "");
-                p.playerKD = Regex.Replace(p.playerKD, pattern, "");
-                p.playerClan = Regex.Replace(p.playerClan, pattern, "");
+                p.playerRageQuit = Regex.Replace(p.playerRageQuit, pattern, "").Trim();
+                p.playerKD = Regex.Replace(p.playerKD, pattern, "").Trim();
+                p.playerClan = Regex.Replace(p.playerClan, pattern, "").Trim();
 
             }
             catch
@@ -68,7 +68,7 @@ namespace RT.Api.Operations
             try
             {
                 p.playerWeaponRank = getweaponrank(playername, p);
-                p.playerWeaponRank = Regex.Replace(p.playerWeaponRank, pattern, "");
+                p.playerWeaponRank = Regex.Replace(p.playerWeaponRank, pattern, "").Trim();
             }
             catch
             {
@@ -99,9 +99,9 @@ namespace RT.Api.Operations
                 b.Get("https://www.gaming-style.com/RushTeam/index.php?page=RankingWr");
                 b.FormElements["user"] = playername;
                 var res = b.Post("https://www.gaming-style.com/RushTeam/index.php?page=RankingWr");
-                p.Weapon_RaceRatio = res.DocumentNode.SelectSingleNode("//section[@id='facts']//td[@data-label='Win Ratio']/text()").InnerText.Replace("/t", "");
-                p.Weapon_RaceWins = res.DocumentNode.SelectSingleNode("//section[@id='facts']//td[@data-label='Game Win']/text()").InnerText.Replace("/t", "");
-                return res.DocumentNode.SelectSingleNode("//section[@id='facts']//td[@data-label='Rank']/text()").InnerText.Replace("/t", "");
+                p.Weapon_RaceRatio = res.DocumentNode.SelectSingleNode("//section[@id='facts']//td[@data-label='Win Ratio']/text()").InnerText.Replace("/t", "").Trim();
+                p.Weapon_RaceWins = res.DocumentNode.SelectSingleNode("//section[@id='facts']//td[@data-label='Game Win']/text()").InnerText.Replace("/t", "").Trim();
+                return res.DocumentNode.SelectSingleNode("//section[@id='facts']//td[@data-label='Rank']/text()").InnerText.Replace("/t", "").Trim();
             }
             catch
             {
@@ -125,15 +125,15 @@ namespace RT.Api.Operations
                 {
                     if (data.InnerText.Contains("HeadShot Ratio"))
                     {
-                        x.playerHeadshotsRatio = data.InnerText.Split(':').Last();
+                        x.playerHeadshotsRatio = data.InnerText.Split(':').Last().Trim();
                     }
                     else
                     {
-                        x.playerHeadshots = data.InnerText.Split(':').Last();
+                        x.playerHeadshots = data.InnerText.Split(':').Last().Trim();
                     }
                 }
-                x.last_seen = doc.DocumentNode.SelectSingleNode("//div[contains(text(),'Has ') and contains(text(),'since')]").InnerText.Replace("/t", "");
-                x.registered_since = doc.DocumentNode.SelectSingleNode("//div[contains(text(),'Registered since')]").InnerText.Replace("/t", "");
+                x.last_seen = doc.DocumentNode.SelectSingleNode("//div[contains(text(),'Has ') and contains(text(),'since')]").InnerText.Replace("/t", "").Trim();
+                x.registered_since = doc.DocumentNode.SelectSingleNode("//div[contains(text(),'Registered since')]").InnerText.Replace("/t", "").Trim();
                 if (x.playerName.ToLower().Contains("umnik"))
                 {
                     x.avatar_url = "https://cdn.discordapp.com/attachments/695018753884422154/696459753710157945/unknown-1.png";
@@ -150,8 +150,8 @@ namespace RT.Api.Operations
                 {
                     x.avatar_url = "https://www.gaming-style.com/RushTeam/" + doc.DocumentNode.SelectSingleNode("//img[contains(@class,'img-responsive center-block')]").Attributes["src"].Value;
                 }
-                x.level_progress = doc.DocumentNode.SelectSingleNode("//li[contains(@class,'strength')]").InnerText.Replace("%", "").Trim();
-                x.playerDeath = doc.DocumentNode.SelectSingleNode("//li[contains(text(),'Deaths :')]").InnerText.Split(':').Last().Trim();
+                x.level_progress = doc.DocumentNode.SelectSingleNode("//li[contains(@class,'strength')]").InnerText.Replace("%", "").Trim().Trim();
+                x.playerDeath = doc.DocumentNode.SelectSingleNode("//li[contains(text(),'Deaths :')]").InnerText.Split(':').Last().Trim().Trim();
                 try
                 {
                     x.onlinefromserver = doc.DocumentNode.SelectSingleNode("//font[contains(text(),'Online')]").InnerText.Split('-').Last().Trim();
@@ -264,7 +264,7 @@ namespace RT.Api.Operations
                 return "something went wrong";
             }
         }
-        public List< string> getonline(string clanName)
+        public List<string> getonline(string clanName)
         {
             string clanname = "[DevilsPainbrush]";
             if (clanName != "")
@@ -272,7 +272,7 @@ namespace RT.Api.Operations
                 clanName.Replace("[", "").Replace("]", "");
                 clanname = string.Format("[{0}]", clanName);
             }
-           
+
             HtmlAgilityPack.HtmlWeb web = new HtmlAgilityPack.HtmlWeb();
             HtmlAgilityPack.HtmlDocument doc = web.Load("https://www.gaming-style.com/RushTeam/index.php?page=Clan&ShowClan=" + clanname);
             var names = doc.DocumentNode.SelectNodes("//td[@data-label='Nickname']/a").ToList();
@@ -299,7 +299,7 @@ namespace RT.Api.Operations
 
                 }
             }
-                return onlineplayers;
+            return onlineplayers;
         }
     }
 

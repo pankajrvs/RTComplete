@@ -9,13 +9,17 @@ namespace RT.Api.Controllers
     [ApiController]
     public class RTController : ControllerBase
     {
+        Ioperations _operation;
+        public RTController(Ioperations operation)
+        {
+            _operation = operation;
+        }
         [HttpGet]
         [Route("api/rt/GetPlayer")]
         public Player GetPlayer( string playername)
         {
-            operations o = new operations();
             Player p = new Player();
-            p = o.setplayer(playername);
+            p = _operation.setplayer(playername);
                 return p;
         }
         [HttpGet]
@@ -23,8 +27,7 @@ namespace RT.Api.Controllers
         public List<string> GetOnlinePlayers(string clan)
         {
             List<string> onlineplayers = new List<string>();
-            operations o = new operations();
-            onlineplayers = o.getonline(clan);
+            onlineplayers = _operation.getonline(clan);
             return onlineplayers;
         }
     }
