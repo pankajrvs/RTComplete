@@ -1,0 +1,203 @@
+﻿@model RT.Data.Player
+
+@{
+    ViewBag.Title = "getPlayer";
+    Layout = "~/Views/Layout/_Layout.cshtml";
+}
+
+<h2>getPlayer</h2>
+
+<div>
+    <h4>Player</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.playerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.playerName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.playerLevel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.playerLevel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.levelImageUrl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.levelImageUrl)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.isOnline)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.isOnline)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.playerRank)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.playerRank)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.playerWeaponRank)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.playerWeaponRank)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.playerExp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.playerExp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.playerKills)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.playerKills)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.playerDeath)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.playerDeath)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.playerGamePlayed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.playerGamePlayed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.playerRageQuit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.playerRageQuit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.playerKD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.playerKD)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.playerHeadshots)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.playerHeadshots)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.playerHeadshotsRatio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.playerHeadshotsRatio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.playerClan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.playerClan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Datadate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Datadate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Weapon_RaceRatio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Weapon_RaceRatio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Weapon_RaceWins)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Weapon_RaceWins)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.last_seen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.last_seen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.avatar_url)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.avatar_url)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.level_progress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.level_progress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.registered_since)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.registered_since)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.onlinefromserver)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.onlinefromserver)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

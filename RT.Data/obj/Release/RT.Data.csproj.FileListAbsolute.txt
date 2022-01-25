@@ -1,0 +1,6 @@
+C:\Users\panka\source\repos\RT\RushTeam\RT.Data\bin\Release\RT.Data.dll
+C:\Users\panka\source\repos\RT\RushTeam\RT.Data\bin\Release\RT.Data.pdb
+C:\Users\panka\source\repos\RT\RushTeam\RT.Data\obj\Release\RT.Data.csproj.AssemblyReference.cache
+C:\Users\panka\source\repos\RT\RushTeam\RT.Data\obj\Release\RT.Data.csproj.CoreCompileInputs.cache
+C:\Users\panka\source\repos\RT\RushTeam\RT.Data\obj\Release\RT.Data.dll
+C:\Users\panka\source\repos\RT\RushTeam\RT.Data\obj\Release\RT.Data.pdb

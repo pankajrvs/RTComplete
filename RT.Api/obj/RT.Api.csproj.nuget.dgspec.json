@@ -1,0 +1,94 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\panka\\source\\repos\\RT\\RTComplete\\RT.Api\\RT.Api.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\panka\\source\\repos\\RT\\RTComplete\\RT.Api\\RT.Api.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\panka\\source\\repos\\RT\\RTComplete\\RT.Api\\RT.Api.csproj",
+        "projectName": "RT.Api",
+        "projectPath": "C:\\Users\\panka\\source\\repos\\RT\\RTComplete\\RT.Api\\RT.Api.csproj",
+        "packagesPath": "C:\\Users\\panka\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\panka\\source\\repos\\RT\\RTComplete\\RT.Api\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\panka\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\panka\\source\\repos\\RT\\RTComplete\\RT.Data\\RT.Data.csproj": {
+                "projectPath": "C:\\Users\\panka\\source\\repos\\RT\\RTComplete\\RT.Data\\RT.Data.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "HtmlAgilityPack": {
+              "target": "Package",
+              "version": "[1.11.40, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.2.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\panka\\source\\repos\\RT\\RTComplete\\RT.Data\\RT.Data.csproj": {
+      "restore": {
+        "projectUniqueName": "C:\\Users\\panka\\source\\repos\\RT\\RTComplete\\RT.Data\\RT.Data.csproj",
+        "projectName": "RT.Data",
+        "projectPath": "C:\\Users\\panka\\source\\repos\\RT\\RTComplete\\RT.Data\\RT.Data.csproj",
+        "frameworks": {
+          "net472": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    }
+  }
+}
