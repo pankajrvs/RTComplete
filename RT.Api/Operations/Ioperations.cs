@@ -13,6 +13,6 @@ namespace RT.Api.Operations
         Weapon GetWeaponsingle(string player, string url);
         List<Player> loadplayers(string players);
         void setapplicationsvariable(string name, List<Player> value);
-        Player setplayer(string playername);
+        Player getPlayer(string playername);
     }
 }

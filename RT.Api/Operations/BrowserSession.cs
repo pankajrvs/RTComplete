@@ -8,7 +8,7 @@ using System.Web;
 
 namespace RT.Api.Operations
 {
-    public class BrowserSession
+    public class BrowserSession : IBrowserSession
     {
         private bool _isPost;
         private HtmlDocument _htmlDoc;

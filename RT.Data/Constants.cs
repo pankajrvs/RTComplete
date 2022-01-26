@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 
 namespace RT.Data
 {
-    public class Constants
+    public static class Constants
     {
-        public string RtwebsitePostBaseUrl = "https://www.gaming-style.com/RushTeam/index.php?page=Ranking";
-        public string RtwebsitePostWrUrl = "https://www.gaming-style.com/RushTeam/index.php?page=RankingWr";
-        public string RtwebsitePostHeadshotUrl = "https://www.gaming-style.com/RushTeam/Index.php?page=NewRanking&Player=";
-
+       public static string RtwebsitePostBaseUrl = "https://www.gaming-style.com/RushTeam/index.php?page=Ranking";
+        public static string RtwebsitePostWrUrl = "https://www.gaming-style.com/RushTeam/index.php?page=RankingWr";
+        public static string RtwebsitePostHeadshotUrl = "https://www.gaming-style.com/RushTeam/Index.php?page=NewRanking&Player=";
+        public static string RtwebsiteClanUrl = "https://www.gaming-style.com/RushTeam/index.php?page=Clan&ShowClan=";
+        public static string BaseClanName = "[DevilsPainbrush]";
+        public static string errorMessage = "Error on fetching data";
 
     }
 }

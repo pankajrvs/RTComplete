@@ -18,17 +18,20 @@ namespace RT.Api.Controllers
         [Route("api/rt/GetPlayer")]
         public Player GetPlayer( string playername)
         {
-            Player p = new Player();
-            p = _operation.setplayer(playername);
-                return p;
+            return _operation.getPlayer(playername); ;
         }
         [HttpGet]
         [Route("api/rt/GetOnlinePlayers")]
-        public List<string> GetOnlinePlayers(string clan)
+        public List<string> GetOnlinePlayers(string clan= "DevilsPainbrush")
         {
-            List<string> onlineplayers = new List<string>();
-            onlineplayers = _operation.getonline(clan);
-            return onlineplayers;
+            return _operation.getonline(clan); ;
+        }
+        [HttpGet]
+        [Route("api/rt/GetPolibilicy")]
+        public Player GetPolibilicy(string player = "pankaj")
+        {
+            Poliblicy p = new Poliblicy();
+            return p.getPoliblicyProfile(player); ;
         }
     }
 }

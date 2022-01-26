@@ -13,6 +13,11 @@ namespace RT.Api.Operations
     public class operations : Ioperations
     {
         String pattern = @"\s+";
+        IBrowserSession _ibrowsersession;
+        public operations(IBrowserSession ibrowsersession)
+        {
+            _ibrowsersession = ibrowsersession;
+        }
 
         public void setapplicationsvariable(string name, List<Player> value)
         {
@@ -24,20 +29,19 @@ namespace RT.Api.Operations
             List<string> arg_player = players.Split(',').ToList();
             foreach (string p in arg_player)
             {
-                args_players.Add(setplayer(p));
+                args_players.Add(getPlayer(p));
             }
             return args_players;
 
         }
-        public Player setplayer(string playername)
+        public Player getPlayer(string playername)
         {
 
 
             Player p = new Player();
-            BrowserSession b = new BrowserSession();
-            b.Get("https://www.gaming-style.com/RushTeam/index.php?page=Ranking");
-            b.FormElements["user"] = playername;
-            var res = b.Post("https://www.gaming-style.com/RushTeam/index.php?page=Ranking");
+            _ibrowsersession.Get(Constants.RtwebsitePostBaseUrl);
+            _ibrowsersession.FormElements["user"] = playername;
+            var res = _ibrowsersession.Post(Constants.RtwebsitePostBaseUrl);
             try
             {
                 p.playerName = res.DocumentNode.SelectSingleNode("//section[@id='facts']//td[@data-label='Nickname']").InnerText.Trim();
@@ -49,21 +53,18 @@ namespace RT.Api.Operations
                 p.playerRageQuit = res.DocumentNode.SelectSingleNode("//section[@id='facts']//td[@data-label='Rage Quit']").InnerText.Trim();
                 p.playerKD = res.DocumentNode.SelectSingleNode("//section[@id='facts']//td[@data-label='K/D']").InnerText.Trim();
                 p.playerClan = res.DocumentNode.SelectSingleNode("//section[@id='facts']//td[@data-label='Clan']").InnerText.Trim();
-
                 p.playerName = Regex.Replace(p.playerName, pattern, "").Trim();
                 p.playerRank = Regex.Replace(p.playerRank, pattern, "").Trim();
                 p.playerExp = Regex.Replace(p.playerExp, pattern, "").Trim();
                 p.playerKills = Regex.Replace(p.playerKills, pattern, "").Trim();
                 p.playerGamePlayed = Regex.Replace(p.playerGamePlayed, pattern, "").Trim();
-
                 p.playerRageQuit = Regex.Replace(p.playerRageQuit, pattern, "").Trim();
                 p.playerKD = Regex.Replace(p.playerKD, pattern, "").Trim();
                 p.playerClan = Regex.Replace(p.playerClan, pattern, "").Trim();
-
             }
             catch
             {
-                p.playerName = "Error on fetching data";
+                p.playerName = Constants.errorMessage;
             }
             try
             {
@@ -72,7 +73,7 @@ namespace RT.Api.Operations
             }
             catch
             {
-                p.playerWeaponRank = "error in fetching rank";
+                p.playerWeaponRank = Constants.errorMessage;
             }
             try
             {
@@ -80,8 +81,8 @@ namespace RT.Api.Operations
             }
             catch
             {
-                p.playerHeadshots = "trouble getting data";
-                p.playerHeadshotsRatio = "trouble gettimng ratio";
+                p.playerHeadshots = Constants.errorMessage;
+                p.playerHeadshotsRatio = Constants.errorMessage;
 
             }
 
@@ -92,21 +93,20 @@ namespace RT.Api.Operations
         public string getweaponrank(string playername, Player p)
         {
 
-            string res1 = "error";
+            string res1 = Constants.errorMessage;
             try
             {
-                BrowserSession b = new BrowserSession();
-                b.Get("https://www.gaming-style.com/RushTeam/index.php?page=RankingWr");
-                b.FormElements["user"] = playername;
-                var res = b.Post("https://www.gaming-style.com/RushTeam/index.php?page=RankingWr");
+                _ibrowsersession.Get(Constants.RtwebsitePostWrUrl);
+                _ibrowsersession.FormElements["user"] = playername;
+                var res = _ibrowsersession.Post(Constants.RtwebsitePostWrUrl);
                 p.Weapon_RaceRatio = res.DocumentNode.SelectSingleNode("//section[@id='facts']//td[@data-label='Win Ratio']/text()").InnerText.Replace("/t", "").Trim();
                 p.Weapon_RaceWins = res.DocumentNode.SelectSingleNode("//section[@id='facts']//td[@data-label='Game Win']/text()").InnerText.Replace("/t", "").Trim();
                 return res.DocumentNode.SelectSingleNode("//section[@id='facts']//td[@data-label='Rank']/text()").InnerText.Replace("/t", "").Trim();
             }
             catch
             {
-                p.Weapon_RaceWins = "Not Active";
-                p.Weapon_RaceRatio = "Not Active";
+                p.Weapon_RaceWins = Constants.errorMessage;
+                p.Weapon_RaceRatio = Constants.errorMessage;
                 return res1;
             }
 
@@ -119,7 +119,7 @@ namespace RT.Api.Operations
             {
 
                 HtmlAgilityPack.HtmlWeb web = new HtmlAgilityPack.HtmlWeb();
-                HtmlAgilityPack.HtmlDocument doc = web.Load("https://www.gaming-style.com/RushTeam/Index.php?page=NewRanking&Player=" + playername);
+                HtmlAgilityPack.HtmlDocument doc = web.Load(Constants.RtwebsitePostHeadshotUrl + playername);
                 var names = doc.DocumentNode.SelectNodes("//li[contains(text(),'HeadShot')]").ToList();
                 foreach (var data in names)
                 {
@@ -163,7 +163,7 @@ namespace RT.Api.Operations
             }
             catch
             {
-                x.playerHeadshots = "trouble getting profile";
+                x.playerHeadshots = Constants.errorMessage;
             }
             return response;
             // return res.DocumentNode.SelectSingleNode("//section[@id='facts']//td[@data-label='Rank']/text()").InnerText.Replace("/t", "");
@@ -217,10 +217,9 @@ namespace RT.Api.Operations
         {
             Weapon w = new Weapon();
             string fullurl = "https://www.gaming-style.com/RushTeam/Index.php?" + url;
-            BrowserSession b = new BrowserSession();
-            b.Get(fullurl);
-            b.FormElements["user"] = player;
-            var res = b.Post(fullurl);
+            _ibrowsersession.Get(fullurl);
+            _ibrowsersession.FormElements["user"] = player;
+            var res = _ibrowsersession.Post(fullurl);
             w.weaponRank = res.DocumentNode.SelectSingleNode("//td[@data-label='Rank']/text()").InnerText.Trim();
             w.TotalKill = res.DocumentNode.SelectSingleNode("//td[@data-label='Kill']/text()").InnerText.Trim();
             w.WPlayername = player;
@@ -230,10 +229,9 @@ namespace RT.Api.Operations
         {
             Weapon w = new Weapon();
             string fullurl = url;
-            BrowserSession b = new BrowserSession();
-            b.Get(fullurl);
-            b.FormElements["user"] = player;
-            var res = b.Post(fullurl);
+            _ibrowsersession.Get(fullurl);
+            _ibrowsersession.FormElements["user"] = player;
+            var res = _ibrowsersession.Post(fullurl);
             w.weaponRank = res.DocumentNode.SelectSingleNode("//td[@data-label='Rank']/text()").InnerText.Trim();
             w.TotalKill = res.DocumentNode.SelectSingleNode("//td[@data-label='Kill']/text()").InnerText.Trim();
             w.WPlayername = player;
@@ -261,12 +259,12 @@ namespace RT.Api.Operations
             }
             catch
             {
-                return "something went wrong";
+                return Constants.errorMessage;
             }
         }
         public List<string> getonline(string clanName)
         {
-            string clanname = "[DevilsPainbrush]";
+            string clanname = Constants.BaseClanName;
             if (clanName != "")
             {
                 clanName.Replace("[", "").Replace("]", "");
@@ -274,7 +272,7 @@ namespace RT.Api.Operations
             }
 
             HtmlAgilityPack.HtmlWeb web = new HtmlAgilityPack.HtmlWeb();
-            HtmlAgilityPack.HtmlDocument doc = web.Load("https://www.gaming-style.com/RushTeam/index.php?page=Clan&ShowClan=" + clanname);
+            HtmlAgilityPack.HtmlDocument doc = web.Load(Constants.RtwebsiteClanUrl + clanname);
             var names = doc.DocumentNode.SelectNodes("//td[@data-label='Nickname']/a").ToList();
             List<string> onlineplayers = new List<string>();
             foreach (var data in names)

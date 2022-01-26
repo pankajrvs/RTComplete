@@ -6,7 +6,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddSwaggerGen();
+builder.Services.AddScoped<IBrowserSession, BrowserSession>();
 builder.Services.AddScoped<Ioperations, operations>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
