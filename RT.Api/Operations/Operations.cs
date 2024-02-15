@@ -39,9 +39,9 @@ namespace RT.Api.Operations
 
 
             Player p = new Player();
-            _ibrowsersession.Get(Constants.RtwebsitePostBaseUrl);
+            _ibrowsersession.Get(Constants2.RtwebsitePostBaseUrl);
             _ibrowsersession.FormElements["user"] = playername;
-            var res = _ibrowsersession.Post(Constants.RtwebsitePostBaseUrl);
+            var res = _ibrowsersession.Post(Constants2.RtwebsitePostBaseUrl);
             try
             {
                 p.playerName = res.DocumentNode.SelectSingleNode("//section[@id='facts']//td[@data-label='Nickname']").InnerText.Trim();
@@ -64,7 +64,7 @@ namespace RT.Api.Operations
             }
             catch
             {
-                p.playerName = Constants.errorMessage;
+                p.playerName = Constants2.errorMessage;
             }
             try
             {
@@ -73,7 +73,7 @@ namespace RT.Api.Operations
             }
             catch
             {
-                p.playerWeaponRank = Constants.errorMessage;
+                p.playerWeaponRank = Constants2.errorMessage;
             }
             try
             {
@@ -81,8 +81,8 @@ namespace RT.Api.Operations
             }
             catch
             {
-                p.playerHeadshots = Constants.errorMessage;
-                p.playerHeadshotsRatio = Constants.errorMessage;
+                p.playerHeadshots = Constants2.errorMessage;
+                p.playerHeadshotsRatio = Constants2.errorMessage;
 
             }
 
@@ -93,20 +93,20 @@ namespace RT.Api.Operations
         public string getweaponrank(string playername, Player p)
         {
 
-            string res1 = Constants.errorMessage;
+            string res1 = Constants2.errorMessage;
             try
             {
-                _ibrowsersession.Get(Constants.RtwebsitePostWrUrl);
+                _ibrowsersession.Get(Constants2.RtwebsitePostWrUrl);
                 _ibrowsersession.FormElements["user"] = playername;
-                var res = _ibrowsersession.Post(Constants.RtwebsitePostWrUrl);
+                var res = _ibrowsersession.Post(Constants2.RtwebsitePostWrUrl);
                 p.Weapon_RaceRatio = res.DocumentNode.SelectSingleNode("//section[@id='facts']//td[@data-label='Win Ratio']/text()").InnerText.Replace("/t", "").Trim();
                 p.Weapon_RaceWins = res.DocumentNode.SelectSingleNode("//section[@id='facts']//td[@data-label='Game Win']/text()").InnerText.Replace("/t", "").Trim();
                 return res.DocumentNode.SelectSingleNode("//section[@id='facts']//td[@data-label='Rank']/text()").InnerText.Replace("/t", "").Trim();
             }
             catch
             {
-                p.Weapon_RaceWins = Constants.errorMessage;
-                p.Weapon_RaceRatio = Constants.errorMessage;
+                p.Weapon_RaceWins = Constants2.errorMessage;
+                p.Weapon_RaceRatio = Constants2.errorMessage;
                 return res1;
             }
 
@@ -119,7 +119,7 @@ namespace RT.Api.Operations
             {
 
                 HtmlAgilityPack.HtmlWeb web = new HtmlAgilityPack.HtmlWeb();
-                HtmlAgilityPack.HtmlDocument doc = web.Load(Constants.RtwebsitePostHeadshotUrl + playername);
+                HtmlAgilityPack.HtmlDocument doc = web.Load(Constants2.RtwebsitePostHeadshotUrl + playername);
                 var names = doc.DocumentNode.SelectNodes("//li[contains(text(),'HeadShot')]").ToList();
                 foreach (var data in names)
                 {
@@ -163,7 +163,7 @@ namespace RT.Api.Operations
             }
             catch
             {
-                x.playerHeadshots = Constants.errorMessage;
+                x.playerHeadshots = Constants2.errorMessage;
             }
             return response;
             // return res.DocumentNode.SelectSingleNode("//section[@id='facts']//td[@data-label='Rank']/text()").InnerText.Replace("/t", "");
@@ -259,12 +259,12 @@ namespace RT.Api.Operations
             }
             catch
             {
-                return Constants.errorMessage;
+                return Constants2.errorMessage;
             }
         }
         public List<string> getonline(string clanName)
         {
-            string clanname = Constants.BaseClanName;
+            string clanname = Constants2.BaseClanName;
             if (clanName != "")
             {
                 clanName.Replace("[", "").Replace("]", "");
@@ -272,7 +272,7 @@ namespace RT.Api.Operations
             }
 
             HtmlAgilityPack.HtmlWeb web = new HtmlAgilityPack.HtmlWeb();
-            HtmlAgilityPack.HtmlDocument doc = web.Load(Constants.RtwebsiteClanUrl + clanname);
+            HtmlAgilityPack.HtmlDocument doc = web.Load(Constants2.RtwebsiteClanUrl + clanname);
             var names = doc.DocumentNode.SelectNodes("//td[@data-label='Nickname']/a").ToList();
             List<string> onlineplayers = new List<string>();
             foreach (var data in names)

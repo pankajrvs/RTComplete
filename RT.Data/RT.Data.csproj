@@ -41,7 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Constants.cs" />
+    <Compile Include="Constants2.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="IRTOperations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

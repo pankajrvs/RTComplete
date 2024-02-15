@@ -51,7 +51,7 @@ namespace RT.Api.Operations
             }
             catch
             {
-                p.playerName = Constants.errorMessage;
+                p.playerName = Constants2.errorMessage;
             }
             return p;
         }

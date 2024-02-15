@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RT.Data
 {
-    public static class Constants
+    public static class Constants2
     {
        public static string RtwebsitePostBaseUrl = "https://www.gaming-style.com/RushTeam/index.php?page=Ranking";
         public static string RtwebsitePostWrUrl = "https://www.gaming-style.com/RushTeam/index.php?page=RankingWr";
